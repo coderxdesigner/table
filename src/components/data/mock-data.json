@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Jennifer Benny",
+    "address": "3 Meep Way",
+    "phone": "800-854-5656",
+    "email": "jenny@email.com"
+  },
+  {
+    "id": 2,
+    "name": "Robert Bleep",
+    "address": "3 Creep Way",
+    "phone": "800-854-5656",
+    "email": "r_bleep@email.com"
+  },
+  {
+    "id": 3,
+    "name": "Sarah Monkey",
+    "address": "28 Sleeping At Night",
+    "phone": "800-854-5656",
+    "email": "monkeybean@email.com"
+  },
+  {
+    "id": 4,
+    "name": "Talia Margo",
+    "address": "8989 Barney Blaney Lane",
+    "phone": "800-854-5656",
+    "email": "t-mango-jango@email.com"
+  },
+  {
+    "id": 5,
+    "name": "Rich Ditchy",
+    "address": "23 Poop Way",
+    "phone": "800-854-5656",
+    "email": "ditchy@email.com"
+  },
+  {
+    "id": 6,
+    "name": "Fred Flippo",
+    "address": "3 Meep Way",
+    "phone": "800-854-5656",
+    "email": "ff@email.com"
+  }
+]
