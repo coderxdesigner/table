@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, Fragment } from 'react'
 import { nanoid } from 'nanoid'
 //components
 import Header from './components/Header'
 import ReadOnlyRow from './components/ReadOnlyRow'
+import EditRow from './components/EditRow'
+
 //global css
 import './app.css'
 import data from './components/data/mock-data.json'
@@ -38,22 +40,27 @@ const App = () => {
   return (
     <div className='app-container'>
       <Header />
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {contacts.map(contact => (
-            <ReadOnlyRow data={contact} />
-          ))}
-        </tbody>
-      </table>
+      <form>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {contacts.map(contact => (
+              <Fragment>
+                <EditRow data={contact} />
+                <ReadOnlyRow data={contact} />
+              </Fragment>
+            ))}
+          </tbody>
+        </table>
+      </form>
       <h2>Add a contact</h2>
       <form onSubmit={handleAddFormSubmit}>
         <input onChange={handleAddFormChange} type='text' name='name' required='required' placeholder='Enter a name' />
