@@ -16,6 +16,13 @@ const App = () => {
     phone: '',
     email: ''
   })
+  const [editFormData, setEditFormData] = useState({
+    name: '',
+    address: '',
+    phone: '',
+    email: ''
+  })
+  const [editContactID, setEditContactID] = useState(null)
   const handleAddFormChange = e => {
     e.preventDefault()
     const fieldName = e.target.getAttribute('name')
@@ -24,18 +31,36 @@ const App = () => {
     newFormData[fieldName] = fieldValue
     setAddFormData(newFormData)
   }
+  const handleEditFormChange = e => {
+    e.preventDefault()
+    const fieldName = e.target.getAttribute('name')
+    const fieldValue = e.target.value
+    const newFormData = { ...editFormData }
+    newFormData[fieldName] = fieldValue
+    setEditFormData(newFormData)
+  }
   const handleAddFormSubmit = e => {
     e.preventDefault()
     const newContact = {
       id: nanoid(),
       name: addFormData.name,
       address: addFormData.address,
-
       phone: addFormData.phone,
       email: addFormData.email
     }
     const newContacts = [...contacts, newContact]
     setContacts(newContacts)
+  }
+  const handleEditClick = (e, contact) => {
+    e.preventDefault()
+    setEditContactID(contact.id)
+    const formValues = {
+      name: contact.name,
+      address: contact.address,
+      phone: contact.phone,
+      email: contact.email
+    }
+    setEditFormData(formValues)
   }
   return (
     <div className='app-container'>
@@ -53,10 +78,7 @@ const App = () => {
           </thead>
           <tbody>
             {contacts.map(contact => (
-              <Fragment>
-                <EditRow data={contact} />
-                <ReadOnlyRow data={contact} />
-              </Fragment>
+              <Fragment>{editContactID === contact.id ? <EditRow data={contact} /> : <ReadOnlyRow data={contact} handleEditClick={handleEditClick} />}</Fragment>
             ))}
           </tbody>
         </table>

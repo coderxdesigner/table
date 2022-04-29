@@ -2,16 +2,16 @@ const EditRow = ({ data }) => {
   return (
     <tr>
       <td>
-        <input type='text' name='name' required='required' placeholder='Enter a name' />
+        <input type='text' name='name' required='required' value={data.name} placeholder='Enter a name' />
       </td>
       <td>
-        <input type='text' name='address' required='required' placeholder='Enter an address' />
+        <input type='text' name='address' required='required' value={data.address} placeholder='Enter an address' />
       </td>
       <td>
-        <input type='phone' name='phone' required='required' placeholder='Enter a phone' />
+        <input type='phone' name='phone' required='required' value={data.phone} placeholder='Enter a phone' />
       </td>
       <td>
-        <input type='email' name='email' required='required' placeholder='Enter an email' />
+        <input type='email' name='email' required='required' value={data.email} placeholder='Enter an email' />
       </td>
       <td>
         <button>Save</button>
