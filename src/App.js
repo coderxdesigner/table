@@ -62,6 +62,21 @@ const App = () => {
     }
     setEditFormData(formValues)
   }
+  const handleSaveClick = e => {
+    e.preventDefault()
+    const editedContact = {
+      id: editContactID,
+      name: editFormData.name,
+      address: editFormData.address,
+      phone: editFormData.phone,
+      email: editFormData.email
+    }
+    const newContact = [...contacts]
+    const index = contacts.findIndex(contact => contact.id === editContactID)
+    newContact[index] = editedContact
+    setContacts(newContact)
+    setEditContactID(null)
+  }
   return (
     <div className='app-container'>
       <Header />
@@ -78,7 +93,7 @@ const App = () => {
           </thead>
           <tbody>
             {contacts.map(contact => (
-              <Fragment>{editContactID === contact.id ? <EditRow data={contact} /> : <ReadOnlyRow data={contact} handleEditClick={handleEditClick} />}</Fragment>
+              <Fragment key={contact.id}>{editContactID === contact.id ? <EditRow data={contact} handleSaveClick={handleSaveClick} editFormData={editFormData} handleEditFormChange={handleEditFormChange} /> : <ReadOnlyRow data={contact} handleEditClick={handleEditClick} />}</Fragment>
             ))}
           </tbody>
         </table>

@@ -1,20 +1,20 @@
-const EditRow = ({ data }) => {
+const EditRow = ({ editFormData, handleEditFormChange, handleSaveClick }) => {
   return (
     <tr>
       <td>
-        <input type='text' name='name' required='required' value={data.name} placeholder='Enter a name' />
+        <input onChange={handleEditFormChange} type='text' name='name' required='required' value={editFormData.name} placeholder='Enter a name' />
       </td>
       <td>
-        <input type='text' name='address' required='required' value={data.address} placeholder='Enter an address' />
+        <input onChange={handleEditFormChange} type='text' name='address' required='required' value={editFormData.address} placeholder='Enter an address' />
       </td>
       <td>
-        <input type='phone' name='phone' required='required' value={data.phone} placeholder='Enter a phone' />
+        <input onChange={handleEditFormChange} type='phone' name='phone' required='required' value={editFormData.phone} placeholder='Enter a phone' />
       </td>
       <td>
-        <input type='email' name='email' required='required' value={data.email} placeholder='Enter an email' />
+        <input onChange={handleEditFormChange} type='email' name='email' required='required' value={editFormData.email} placeholder='Enter an email' />
       </td>
       <td>
-        <button>Save</button>
+        <button onSubmit={handleSaveClick}>Save</button>
         <button>Cancel</button>
       </td>
     </tr>
