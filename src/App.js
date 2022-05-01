@@ -77,10 +77,21 @@ const App = () => {
     setContacts(newContact)
     setEditContactID(null)
   }
+  const handleCancelClick = e => {
+    e.preventDefault()
+    setEditContactID(null)
+  }
+  const handleDeleteClick = (e, contactId) => {
+    e.preventDefault()
+    const newContacts = [...contacts]
+    const index = contacts.findIndex(contact => contact.id === contactId)
+    newContacts.splice(index, 1)
+    setContacts(newContacts)
+  }
   return (
     <div className='app-container'>
       <Header />
-      <form>
+      <form onSubmit={handleSaveClick}>
         <table>
           <thead>
             <tr>
@@ -93,7 +104,7 @@ const App = () => {
           </thead>
           <tbody>
             {contacts.map(contact => (
-              <Fragment key={contact.id}>{editContactID === contact.id ? <EditRow data={contact} handleSaveClick={handleSaveClick} editFormData={editFormData} handleEditFormChange={handleEditFormChange} /> : <ReadOnlyRow data={contact} handleEditClick={handleEditClick} />}</Fragment>
+              <Fragment key={contact.id}>{editContactID === contact.id ? <EditRow handleCancelClick={handleCancelClick} data={contact} editFormData={editFormData} handleEditFormChange={handleEditFormChange} /> : <ReadOnlyRow data={contact} handleDeleteClick={handleDeleteClick} handleEditClick={handleEditClick} />}</Fragment>
             ))}
           </tbody>
         </table>

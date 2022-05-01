@@ -1,4 +1,4 @@
-const ReadOnlyRow = ({ data, handleEditClick }) => {
+const ReadOnlyRow = ({ data, handleEditClick, handleDeleteClick }) => {
   return (
     <tr>
       <td>{data.name}</td>
@@ -9,7 +9,9 @@ const ReadOnlyRow = ({ data, handleEditClick }) => {
         <button type='button' onClick={e => handleEditClick(e, data)}>
           Edit
         </button>
-        <button>Delete</button>
+        <button type='button' onClick={e => handleDeleteClick(e, data.id)}>
+          Delete
+        </button>
       </td>
     </tr>
   )

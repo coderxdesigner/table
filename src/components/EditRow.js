@@ -1,4 +1,4 @@
-const EditRow = ({ editFormData, handleEditFormChange, handleSaveClick }) => {
+const EditRow = ({ editFormData, handleEditFormChange, handleCancelClick }) => {
   return (
     <tr>
       <td>
@@ -14,8 +14,10 @@ const EditRow = ({ editFormData, handleEditFormChange, handleSaveClick }) => {
         <input onChange={handleEditFormChange} type='email' name='email' required='required' value={editFormData.email} placeholder='Enter an email' />
       </td>
       <td>
-        <button onSubmit={handleSaveClick}>Save</button>
-        <button>Cancel</button>
+        <button type='submit'>Save</button>
+        <button onClick={handleCancelClick} type='reset'>
+          Cancel
+        </button>
       </td>
     </tr>
   )
